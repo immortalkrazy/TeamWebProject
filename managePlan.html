@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Viga&display=swap"
+         rel="stylesheet"
+         />
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+         crossorigin="anonymous"
+         />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      <title>Account Settings</title>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      <script src="myScript.js"></script>
+   </head>
+   <body >
+      <nav id="mainNav" class="navbar navbar-light navbar-expand-md">
+         <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav">
+               <li class="nav-item active">
+                  <a href="index.html" class="nav-link">HOME</a>
+               </li>
+               <li class="nav-item active">
+                  <a href="signIn.html" class="nav-link">Sign In</a>
+               </li>
+               <li class="nav-item active">
+                  <a href="setting.html" class="nav-link">Settings</a>
+               </li>
+               <li id="my-target" class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-target="#my-target"
+                  >
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="UserProfile/index.html">My Profile</a>
+                    <a class="dropdown-item" href="notes.html">Post A Note</a>
+                    <a class="dropdown-item" href="index.html">Sign out</a>
+                  </div>
+                </li>
+            </ul>
+         </div>
+      </nav>
+
+<!-- Information for current plan and account info would be pulled from json search via user name and current active plan -->
+<!-- Plan option and cost would be obtained by querying plan table -->
+
+      <body class="settingsBody">
+      <div id="container" style="">
+         <div id=main class="planDetails" style="background-color:LightBlue;margin-top:25px;margin-right:100px;margin-left:200px;width:1500px;border:solid black;"> 
+	    	<section style="margin-left:100px;">
+		   <nav style="float:left;margin-top:30px;line-height:2;">
+
+		      <h3>Current Plan:</h3>
+ 		      <br>
+  	    	      <label for="name" style="margin-right:30px;">Name:</label>
+		      <input type="text" id="name" readonly style="background-color:#D3D3D3;"> <br>
+		      <label for="plan" style="margin-right:40px;">Plan: </label>
+	              <input type="text" id="plan" readonly style="background-color:#D3D3D3;"> <br>
+	              <label for="cost" style="margin-right:40px;">Cost:</label>
+                      <input type="text" id="cost" readonly style="background-color:#D3D3D3;"> <br>
+                      <label for="nextDue" style="margin-right:4px;">Next Due:</label>
+                      <input type="text" id="nextDue" readonly style="background-color:#D3D3D3;"><br>
+                      <button onclick="history()" style="width:170px;color:blue;margin-top:50px;text-align:left;">View Payment History</button>
+                      <br>
+		      <select id="currentPlan" style="background-color:#ffffff;height:40px;margin-top:20px;width:170px;color:blue;text-align:right;" onChange="updatePlan()">
+  			 <option value="" disabled selected>Change Plan</option>
+   			 <option value="Basic">Basic</option>
+  			 <option value="Standard">Standard</option>
+  			 <option value="Premium">Premium</option>
+		      </select>
+                         <script>
+
+                         function history() {
+                            alert("Payment History would go here");
+                         }
+
+			 function updateInfo() {
+           		    document.getElementById("name").value = activeUser;
+                            document.getElementById("plan").value = accounts[activeUser].plan;
+			    document.getElementById("cost").value = accounts[activeUser].cost;
+                            document.getElementById("nextDue").value = accounts[activeUser].nextDue;
+ 			 }
+
+			function updatePlan() {
+  			   if (accounts[activeUser].plan != document.getElementById("currentPlan").value) {
+      			   var newPlan = document.getElementById("currentPlan").value;
+      			   console.log("newPlan " + newPlan);
+      			   accounts[activeUser].plan = newPlan;
+      			   accounts[activeUser].cost = obj[newPlan].cost;
+      			   console.log("updated cost: " + accounts[activeUser].cost);
+      			   updateInfo();
+  			   }
+ 			   else { 
+      			   alert("You are already on the " + accounts[activeUser].plan + " Plan.");
+ 			   }
+			}
+
+			var activeUser = "John Smith";
+
+			var accounts = [
+  			   {"name":"Jane Doe", "plan":"Standard", "cost":"$19.99", "nextDue":"5/20/2020"},
+  			   {"name":"John Smith", "plan":"Basic", "cost":"$14.99", "nextDue":"5/4/2020"},
+  			   {"name":"Barrack Obama", "plan":"Premium","cost":"$29.99", "nextDue":"6/5/2020"}
+			];
+
+			accounts.forEach(function(item) {
+  			   accounts[item.name]=item;
+			});
+
+                        var obj = [
+  			   {"plan":"Basic","cost":"$14.99"},
+  			   {"plan":"Standard","cost":"$19.99"},
+  		           {"plan":"Premium","cost":"$29.99"}
+			];
+
+			obj.forEach(function(item) {
+  			   obj[item.plan]=item;
+			});
+
+  			updateInfo();
+
+			</script>
+
+                   </nav>
+   
+                   <div style="border-left: 3px solid black;height:510px;position:absolute;left:600px;">
+                   </div>
+                   <div style="border-left: 3px solid black;height:510px;position:absolute;left:580px;">
+                   </div>
+
+                   <article style="float:left;margin-left:350px;margin-top:30px;margin-bottom:30px;line-height:3">
+		      <h3 style="text-indent:120px;">Plan Details:</h3>
+                      <hr style="width:175px;margin-left:120px;color:black;background-color:black;">
+                         <!-- Plan details was NOT created by me, but for consistency purposes I replicated the figures -->
+		      <table style="width:125%;text-align:center">
+  			<tr>
+			   <th></th>
+    			   <th>Basic</th>
+    			   <th>Standard</th> 
+      			   <th>Premium</th>
+  			</tr>
+  			<tr>
+    			   <td>Monthly Cost</td>
+    			   <td>US$14.99</td>
+    			   <td>US$19.99</td>
+			   <td>US$29.99</td>
+  			</tr>
+  			<tr>
+    			   <td>Maximum Access to 10 Notes per day</td>
+    		           <td>&#10004</td>
+                           <td>&#10004</td>
+			   <td>&#10004</td>
+                        </tr>
+                        <tr>
+                	   <td>Maximum Access to 50 Notes per day</td>
+                           <td>&#10006;</td>
+                           <td>&#10004;</td>
+                           <td>&#10004;</td>
+                        </tr>
+                        <tr>
+                           <td>Unlimited Amount of Times Accessing Notes</td>
+                           <td class='group1'>&#10006;</td>
+                           <td class='group2'>&#10006;</td>
+                           <td class='group3'>&#10004;</td>
+                        </tr>
+            		<tr>
+              		   <td>Watch Videos That Accompany The Notes</td>
+              		   <td class='group1'>&#10006;</td>
+              		   <td class='group2'>&#10004;</td>
+              		   <td class='group3'>&#10004;</td>
+            		</tr>
+            		<tr>
+              		   <td>Post Questions</td>
+              		   <td class='group1'>&#10006;</td>
+                           <td class='group2'>&#10006;</td>
+                           <td class='group3'>&#10004;</td>
+            		</tr>
+            		<tr>
+              	 	   <td>Post Notes</td>
+              		   <td class='group1'>&#10004;</td>
+              	           <td class='group2'>&#10004;</td>
+              		   <td class='group3'>&#10004;</td>
+            		</tr>
+                   </table>
+ 		   </article>	
+		</section>		    
+         </div>
+      </div>
+
+      </body>
+      <footer id="footer">
+      </footer>
+   </body>
+</html>

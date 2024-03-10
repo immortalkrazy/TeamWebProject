@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Muli|Raleway|Roboto|Sniglet" rel="stylesheet">
+  <link rel="icon" type="image/ico" href="https://img2-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/16496/large_thumb_stage.jpg" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <title>Chegg</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="myScript.js"></script>
+</head>
+
+<body>
+  <nav id="mainNav" class="navbar navbar-light navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navLinks">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a href="index.html" class="nav-link">HOME</a>
+        </li>
+        <li id="signInNav" class="nav-item">
+          <a href="signIn.html" class="nav-link">Sign In</a>
+        </li>
+        <li class="nav-item">
+          <a href="setting.html" class="nav-link">Settings</a>
+        </li>
+        <li>
+          <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
+        </li>
+        <li id="my-target" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-target="#my-target">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="UserProfile/index.html">My Profile</a>
+            <a class="dropdown-item" href="notes.html">Post A Note</a>
+            <a class="dropdown-item" href="index.html">Sign out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="banner">
+    <section class="blurb">
+      <h1>An even smarter way to student.</h1>
+      <p>
+        We present the design for a note-sharing platform where students can offer
+        notes taken based on subjects/topics, textbooks, and video lectures. Click below
+        to see our plans and sign up!
+      </p>
+      <br />
+      <button type="button" class="btn btn-primary" onclick="goToPlan()">
+        SEE PLANS
+      </button>
+      <p id="demo"></p>
+    </section>
+  </div>
+
+  <section class="container-lg">
+    <div class="break">
+      <h1>Study better.</h1>
+    </div>
+  </section>
+
+  <div class="banner3" id="second">
+    <section class="blurb">
+      <h1> Our Service Concept: An Extended Description </h1>
+      <p> Using Chegg— which provides digital and physical textbook rentals, online tutoring,
+        and other student services, such as textbook/expert solutions— as the basis for the idea,
+        we formulated the concept of a note-sharing platform, through which students would be able
+        to offer notes taken based on subjects/topics, textbooks, and video lectures. Supplementary
+        materials, such as videos or articles that students found helpful in explaining a given topic,
+        would be available through the note-sharing service as well. In addition, there were a few
+        features that we figured would contribute to making our application more reliable from a student’s
+        perspective. Chegg utilizes the availability of certified experts on a variety of topics in order
+        to ensure the quality of textbook solutions/answers to students’ questions. We wanted to implement
+        a similar system through which we would be able to approve notes submissions or students’ additions
+        to previously submitted notes before they’re put up, as well as a feedback system in order to gauge
+        how helpful the notes were. Overall, the service would make notes far more accessible to students
+        who physically may not be able to take notes, or simply prove to be convenient/helpful to students
+        trying to understand/solidify topics while developing more efficient note taking strategies.
+      </p>
+
+      </button>
+      <p id="demo"></p>
+    </section>
+  </div>
+
+  <div class="card-footer">
+    <div class="icon">
+
+      <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="https://www.google.com" class="fa fa-google"></a>
+      <a href="#" class="fa fa-linkedin"></a>
+      <a href="#" class="fa fa-youtube"></a>
+      <a href="#" class="fa fa-instagram"></a>
+    </div>
+
+    <div class="form-wrap">
+      <label for="email" style="font-family: 'Muli', sans-serif" ;>GET BEST OFFERS BY EMAIL:</label>
+      <input type="email" id="email" placeholder="Enter you email address" name="email">
+      <button type="submit"><a href="mailto:someone@example.com?Subject=Hello%20again">send</a></button>
+    </div>
+
+    <div class="footerContent">
+      <h6> Copyright Group B CISC 3140 </h6>
+    </div>
+
+  </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+  <!--  create return button to top of the page-->
+  <script>
+    window.onscroll = function() {
+      scrollFunction()
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+    $(function() {
+      var header = $(".navbar");
+
+      $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 50) {
+          header.addClass("scrolled");
+        } else {
+          header.removeClass("scrolled");
+        }
+      });
+
+    });
+  </script>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
